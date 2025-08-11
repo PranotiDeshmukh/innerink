@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
+import 'package:innerink_diary/screens/Splashscreen.dart';
+import 'package:innerink_diary/screens/loginscreen.dart';
+
 import 'package:innerink_diary/screens/silderscreen2.dart';
+import 'package:innerink_diary/screens/sliderscreen1.dart';
 //import 'package:innerink_diary/Splashscreen.dart';
 //import 'package:innerink_diary/screens/sliderscreen1.dart';
-//import 'package:innerink_diary/Splashscreen.dart';
-//import 'package:innerink_diary/loginscreen.dart';
-//import 'package:innerink_diary/sliderscreen1.dart';   
 
 void main() {
   runApp(const MyApp());
@@ -16,11 +18,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home:Silderscreen2(),
-      //Splashscreen(),
-      // Loginscreen(  ),
+      initialRoute: '/Loginscreen',
+      routes:
+       {
+        '/Loginscreen' : (context) => Loginscreen(),
+        '/Silderscreen2' : (context)=> Silderscreen2(),
+        '/Silderscreen1' : (context)=> Sliderscreen1(),
+        'Splashscreen' : (context)=> Splashscreen(),
+      },
     );
       
        

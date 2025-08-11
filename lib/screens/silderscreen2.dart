@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:innerink_diary/colors/App_color.dart';
 
 class Silderscreen2 extends StatelessWidget {
   const Silderscreen2({super.key});
@@ -26,17 +27,20 @@ class Silderscreen2 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text("Express your \n Dreams",
-            style: TextStyle(color: Colors.white,
+            style: TextStyle(color: AppColor.secondarycolor,
             fontSize: 40,
             fontWeight: FontWeight.bold,
             ),),
-
+ 
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 50,horizontal: 100 ),
-              child: Text("Welcome to InnerInk",style: TextStyle(color: Colors.white,fontSize: 18 ,fontWeight: FontWeight.w500),),
+              child: Text("Welcome to InnerInk",style: TextStyle(color: AppColor.secondarycolor,fontSize: 18 ,fontWeight: FontWeight.w500),),
             ),
 
-            Image.asset("assets/images/dream.png")
+            Padding(
+              padding: const EdgeInsets.only(left: 25,),
+             
+            )
           ],
         )
       ,),

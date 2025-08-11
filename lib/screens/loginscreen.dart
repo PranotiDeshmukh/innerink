@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:innerink_diary/colors/App_color.dart';
 
 class Loginscreen extends StatefulWidget {
   const Loginscreen({super.key});
@@ -27,30 +28,88 @@ class _LoginscreenState extends State<Loginscreen> {
     ),
   ),
   child: 
-  Column(
-    children: [
-      Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 10,top: 25),
-            child: Icon(Icons.arrow_back,color: Colors.white,size: 30,),
-          ),
-          SizedBox(width: 20,),
-          Padding(
-            padding: const EdgeInsets.only(top: 25),
-            child: Text("Login Page",style: TextStyle(color: Colors.white,fontSize: 25),),
-          )
-        ],
-      ),
-      TextFormField(
-        decoration: InputDecoration(
-          border: OutlineInputBorder(
-            
-          )
+  
+  SingleChildScrollView(scrollDirection: Axis.vertical,
+    child: Column(
+      
+      children: [
+        
+        Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 10,top: 25),
+              child: Icon(Icons.arrow_back,color: AppColor.secondarycolor,size: 30,),
+            ),
+            SizedBox(width: 20,),
+            Padding(
+              padding: const EdgeInsets.only(top: 25),
+              child: Text("Login Page",style: TextStyle(color : AppColor.secondarycolor,fontSize: 25),),
+            )
+          ],
         ),
+        SizedBox(height: 40,),
+    
+        Image.asset("assets/images/loginimage.png"),
+        SizedBox(height: 20,),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20,),
+          child: TextFormField(
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.email_outlined,),
+              hint: Text("Email",style: TextStyle(color: AppColor.ternarycolor,),),
+              filled: true,
+              fillColor: AppColor.secondarycolor,
+              border: OutlineInputBorder(
+    
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: BorderSide.none,
+                
+                
+                
+              )
+            ),
+          
+          ),
+        ),
+        SizedBox(height: 20,),
+    
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20,),
+          child: TextFormField(
+            decoration: InputDecoration(
+              prefixIcon: Icon(Icons.lock,),
+              hint: Text("password",style: TextStyle(color: AppColor.ternarycolor),),
+              suffixIcon: Icon(Icons.remove_red_eye),
+              fillColor: AppColor.secondarycolor,
+              filled: true,
+              border : OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+              )
+            ),
+            
+          
+          ),
+        ),
+        SizedBox(height: 30,),
+    
+        
+         // padding: const EdgeInsets.only(left: 40),
+          //child:
+           ElevatedButton
+          (onPressed: (){},
+          style: ElevatedButton.styleFrom(
+            padding: EdgeInsets.symmetric(horizontal: 145,vertical: 14),
+            backgroundColor: Colors.blue),
+           child: Text("Login",style: TextStyle(color: AppColor.secondarycolor,fontSize: 20),),),
 
-      )
-    ],
+            SizedBox(height: 15,),
+            Text("OR",style: TextStyle(color: AppColor.secondarycolor,),),
+            SizedBox(height: 15,),
+           Text("Don't have any account ? ",style: TextStyle(color: const Color.fromARGB(255, 182, 180, 180),fontSize: 18),),
+           Text("Create Account ",style: TextStyle(color: Colors.blue,fontSize: 22),)
+        
+      ],
+    ),
   )
 
       ),

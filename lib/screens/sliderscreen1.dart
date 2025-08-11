@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:innerink_diary/colors/App_color.dart';
 
 class Sliderscreen1 extends StatelessWidget {
   const Sliderscreen1({super.key});
@@ -28,7 +29,7 @@ class Sliderscreen1 extends StatelessWidget {
               Text(
                 "Express your \nFeelings",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: AppColor.secondarycolor,
                   fontSize: 40,
                   fontWeight: FontWeight.bold,
                 ),
@@ -42,7 +43,7 @@ class Sliderscreen1 extends StatelessWidget {
                 child: Text(
                   "welcome to InnerInk!!",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: AppColor.secondarycolor,
                     fontSize: 18.0,
                     fontWeight: FontWeight.w500,
                   ),
@@ -60,7 +61,7 @@ class Sliderscreen1 extends StatelessWidget {
                   ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(vertical: 14,horizontal: 120,
                     ),
-                    backgroundColor: Colors.blue,foregroundColor: Colors.white,
+                    backgroundColor: Colors.blue,foregroundColor: AppColor.secondarycolor,
                  ),
                   child: Text("Continue",style: TextStyle(fontSize: 20),),
                 ),
