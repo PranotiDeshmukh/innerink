@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:innerink_diary/colors/App_color.dart';
+import 'package:innerink_diary/screens/create_account.dart';
 
 class Loginscreen extends StatefulWidget {
   const Loginscreen({super.key});
@@ -106,7 +107,17 @@ class _LoginscreenState extends State<Loginscreen> {
             Text("OR",style: TextStyle(color: AppColor.secondarycolor,),),
             SizedBox(height: 15,),
            Text("Don't have any account ? ",style: TextStyle(color: const Color.fromARGB(255, 182, 180, 180),fontSize: 18),),
-           Text("Create Account ",style: TextStyle(color: Colors.blue,fontSize: 22),)
+           TextButton(onPressed: (){},
+           child:
+           GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> createAccount()));
+            },
+            child: const Text("Create Account ",style: TextStyle(color: Colors.blue,fontSize: 22),),
+
+           ),
+            ),
+           
         
       ],
     ),

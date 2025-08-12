@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:innerink_diary/screens/Splashscreen.dart';
+import 'package:innerink_diary/screens/create_account.dart';
 import 'package:innerink_diary/screens/loginscreen.dart';
 
 import 'package:innerink_diary/screens/silderscreen2.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/Loginscreen',
       routes:
        {
+        '/createAccount' : (context) => createAccount(),
         '/Loginscreen' : (context) => Loginscreen(),
         '/Silderscreen2' : (context)=> Silderscreen2(),
         '/Silderscreen1' : (context)=> Sliderscreen1(),
