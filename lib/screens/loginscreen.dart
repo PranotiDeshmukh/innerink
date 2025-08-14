@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:innerink_diary/colors/App_color.dart';
 import 'package:innerink_diary/screens/create_account.dart';
 import 'package:innerink_diary/screens/genderselectionscreen.dart';
+import 'package:innerink_diary/screens/sliderScreens.dart';
 
 class Loginscreen extends StatefulWidget {
   const Loginscreen({super.key});
@@ -40,7 +42,18 @@ class _LoginscreenState extends State<Loginscreen> {
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 10,top: 25),
-              child: Icon(Icons.arrow_back,color: AppColor.secondarycolor,size: 30,),
+              
+              child:
+              IconButton(onPressed: (){
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Sliderscreens()));
+                },
+                
+              );
+              }, icon:  Icon(Icons.arrow_back,color: AppColor.secondarycolor,size: 30,),),
+              
+               //Icon(Icons.arrow_back,color: AppColor.secondarycolor,size: 30,),
             ),
             SizedBox(width: 20,),
             Padding(

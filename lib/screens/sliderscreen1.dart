@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:innerink_diary/colors/App_color.dart';
+import 'package:innerink_diary/screens/loginscreen.dart';
 
 class Sliderscreen1 extends StatelessWidget {
   const Sliderscreen1({super.key});
@@ -56,7 +57,9 @@ class Sliderscreen1 extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 30.0,top: 110.0),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> Loginscreen()));
+                  },
                   style: 
                   ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(vertical: 14,horizontal: 120,

@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/Silderscreen1',
+      initialRoute:  'Splashscreen' ,
       routes:
        {
         '/createAccount' : (context) => createAccount(),
