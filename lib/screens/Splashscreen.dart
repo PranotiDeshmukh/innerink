@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:innerink_diary/screens/loginscreen.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -9,6 +12,14 @@ class Splashscreen extends StatefulWidget {
 
 class _SplashscreenState extends State<Splashscreen> {
   @override
+
+  void initState(){
+    super.initState();
+
+    Timer(const Duration(seconds: 5), (){
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Loginscreen()));
+    });
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(

@@ -5,4 +5,8 @@ class AppRoutes {
   static const String Splashscreen ='/Splashscreen';
   static const String createAccount = '/createAccount';
   static const String mainscreen = '/mainscreen';
+  static const String GenderSelectionScreen = '/GenderSelectionScreen';
+  static const String AgegroupScreen = '/AgegroupScreen';
+  static const String Writescreen = '/Writescreen';
+  static const String Keepdiaryscreen = '/Keepdiaryscreen';
 }

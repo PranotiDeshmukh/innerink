@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:innerink_diary/colors/App_color.dart';
 import 'package:innerink_diary/screens/create_account.dart';
+import 'package:innerink_diary/screens/genderselectionscreen.dart';
 
 class Loginscreen extends StatefulWidget {
   const Loginscreen({super.key});
@@ -97,7 +98,9 @@ class _LoginscreenState extends State<Loginscreen> {
          // padding: const EdgeInsets.only(left: 40),
           //child:
            ElevatedButton
-          (onPressed: (){},
+          (onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> GenderSelectionScreen()));
+          },
           style: ElevatedButton.styleFrom(
             padding: EdgeInsets.symmetric(horizontal: 145,vertical: 14),
             backgroundColor: Colors.blue),

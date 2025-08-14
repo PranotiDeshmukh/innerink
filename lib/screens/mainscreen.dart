@@ -10,6 +10,8 @@ class mainscreen extends StatefulWidget {
 class _mainscreenState extends State<mainscreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: Colors.pink,
+    );
   }
 }
