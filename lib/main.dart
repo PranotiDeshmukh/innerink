@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+
 import 'package:innerink_diary/screens/Splashscreen.dart';
 import 'package:innerink_diary/screens/agegroup_screen.dart';
 import 'package:innerink_diary/screens/create_account.dart';
+import 'package:innerink_diary/screens/darkscreen.dart';
 import 'package:innerink_diary/screens/genderselectionscreen.dart';
 import 'package:innerink_diary/screens/keepdiaryscreen.dart';
+import 'package:innerink_diary/screens/lightscreen.dart';
 import 'package:innerink_diary/screens/loginscreen.dart';
 
 import 'package:innerink_diary/screens/silderscreen2.dart';
@@ -25,7 +28,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute:  'Splashscreen' ,
+      initialRoute:  '/maindarkscreen' ,
       routes:
        {
         '/createAccount' : (context) => createAccount(),
@@ -37,6 +40,9 @@ class MyApp extends StatelessWidget {
         '/AgegroupScreen' : (context)=>AgegroupScreen(),
         '/Writescreen' : (context) => Writescreen(),
         '/Keepdiaryscreen' : (context) => Keepdiaryscreen(),
+       // '/CurvedBackgroundScreen' : (context)=>CurvedBackgroundScreen(),
+       '/maindarkscreen' : (context)=>maindarkscreen(),
+       '/mainlightscreen' : (context)=>mainlightscreen(),
       },
     );
       
