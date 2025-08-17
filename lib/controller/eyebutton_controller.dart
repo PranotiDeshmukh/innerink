@@ -1,16 +1,16 @@
 import 'package:get/get.dart';
 
 class EyebuttonController extends GetxController{
-  var eye = false.obs;
+  var eye = true.obs;
 
   void eyebutton()
   {
-     if(eye.value  == false ){
-      eye.value = true;
+     if(eye.value  == true ){
+      eye.value = false;
       }
 
       else{
-        eye.value = false;
+        eye.value = true;
       }
 
   }  

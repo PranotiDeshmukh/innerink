@@ -25,69 +25,72 @@ class Sliderscreen1 extends StatelessWidget {
             ],
           ),
         ),
-        child: Padding(
-          padding: EdgeInsets.only(top: screenHeight * 0.02),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Express your \nFeelings",
-                style: TextStyle(
-                  color: AppColor.secondarycolor,
-                  fontSize: screenWidth * 0.1, // responsive font
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  vertical: screenHeight * 0.06,
-                  horizontal: screenWidth * 0.25,
-                ),
-                child: Text(
-                  "welcome to InnerInk!!",
+        child: 
+        SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.only(top: screenHeight * 0.02),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Express your \nFeelings",
                   style: TextStyle(
                     color: AppColor.secondarycolor,
-                    fontSize: screenWidth * 0.045,
-                    fontWeight: FontWeight.w500,
+                    fontSize: screenWidth * 0.1, // responsive font
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: screenWidth * 0.07),
-                child: Image.asset(
-                  "assets/images/smile.png",
-                  height: screenHeight * 0.35,
-                  width: screenWidth * 0.7,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: screenWidth * 0.08,
-                  top: screenHeight * 0.13,
-                ),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Loginscreen()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(
-                      vertical: screenHeight * 0.02,
-                      horizontal: screenWidth * 0.3,
-                    ),
-                    backgroundColor: Colors.blue,
-                    foregroundColor: AppColor.secondarycolor,
+                
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: screenHeight * 0.06,
+                    horizontal: screenWidth * 0.25,
                   ),
                   child: Text(
-                    "Continue",
-                    style: TextStyle(fontSize: screenWidth * 0.05),
+                    "welcome to InnerInk!!",
+                    style: TextStyle(
+                      color: AppColor.secondarycolor,
+                      fontSize: screenWidth * 0.045,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
-              ),
-            ],
+                Padding(
+                  padding: EdgeInsets.only(left: screenWidth * 0.11),
+                  child: Image.asset(
+                    "assets/images/smile.png",
+                    height: screenHeight * 0.35,
+                    width: screenWidth * 0.7,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: screenWidth * 0.08,
+                    top: screenHeight * 0.13,
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Loginscreen()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(
+                        vertical: screenHeight * 0.02,
+                        horizontal: screenWidth * 0.3,
+                      ),
+                      backgroundColor: Colors.blue,
+                      foregroundColor: AppColor.secondarycolor,
+                    ),
+                    child: Text(
+                      "Continue",
+                      style: TextStyle(fontSize: screenWidth * 0.05),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

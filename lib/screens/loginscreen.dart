@@ -125,7 +125,7 @@ class _LoginscreenState extends State<Loginscreen> {
                             eyebutton.eyebutton();
                           },
                           icon: Icon(
-                            eyebutton.eye == false ? Icons.remove_red_eye : Icons.visibility_off,
+                            eyebutton.eye == false ?  Icons.visibility_off : Icons.remove_red_eye,
                           ),
                         ),
                         fillColor: AppColor.secondarycolor,
