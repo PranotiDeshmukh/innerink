@@ -11,90 +11,58 @@ class AgegroupScreen extends StatelessWidget {
   final AgegroupController agecontroller = Get.put(AgegroupController());
    AgegroupScreen({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration:  const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xFFe1bce7), Color(0xFF8a5f99)],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
+ @override
+Widget build(BuildContext context) {
+  final height = MediaQuery.of(context).size.height;
+  final width = MediaQuery.of(context).size.width;
+
+  return Scaffold(
+    body: Container(
+      width: double.infinity,
+      height: double.infinity,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [Color(0xFFe1bce7), Color(0xFF8a5f99)],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
         ),
-        child: 
-        Column(
-          children: [
-            
-           Padding(
-             padding: const EdgeInsets.only(right: 70 ,top: 40),
-             child: Text("What is your age group ?",style: TextStyle(color: AppColor.primarycolor,fontSize: 25,fontWeight: FontWeight.bold),),
-           ),
-           SizedBox(height: 35,),
-           Image.asset("assets/images/age.png",height: 200,),
-           SizedBox(height: 40,),
-          
-
-           ageoption(label: 'Teenager'),
-           ageoption(label: 'Youngster'),
-           ageoption(label: 'Adult'),
-           ageoption(label: 'Old'),
-
-           SizedBox(height: 150,),
-
-           Row(
-            children: [
-              
-              GestureDetector(
-                 onTap :() {
-                  Navigator.pop(context, MaterialPageRoute(builder: (context)=> GenderSelectionScreen()));
-                 },
-                 child: 
-                 Padding(
-                   padding: const EdgeInsets.only(left: 10,),
-                   child:
-                   GestureDetector(
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> GenderSelectionScreen()));
-                    },
-                    child:CircleAvatar(
-                                   backgroundColor: AppColor.secondarycolor,
-                                   child: Icon(Icons.arrow_back,color: AppColor.primarycolor,size: 30,),
-                                 ), 
-                   ) ,
-                 ),
-              ),
-              // CircleAvatar(
-              //   backgroundColor: AppColor.secondarycolor,
-              //   child: Icon(Icons.arrow_back,color: AppColor.primarycolor,size: 30,),
-              // ),
-              SizedBox(width: 280,),
-               GestureDetector(
-                 onTap :() {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> Writescreen()));
-                   
-                 },
-                 child: 
-                   CircleAvatar(
-                backgroundColor: AppColor.secondarycolor,
-                child: Icon(Icons.arrow_forward,color: AppColor.primarycolor,size: 30,),
-              ),
-              ),
-              // CircleAvatar(
-              //   backgroundColor: AppColor.secondarycolor,
-              //   child: Icon(Icons.arrow_forward,color: AppColor.primarycolor,size: 30,),
-              // ),
-            ],
-           )
-          ],
-        )
       ),
-      
-    );
-  }
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(
+              right: width * 0.18,   // instead of fixed 70
+              top: height * 0.05,   // instead of fixed 40
+            ),
+            child: Text(
+              "What is your age group ?",
+              style: TextStyle(
+                color: AppColor.primarycolor,
+                fontSize: width * 0.06, // dynamic font size
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          SizedBox(height: height * 0.05), // instead of 35
+          Image.asset(
+            "assets/images/age.png",
+            height: height * 0.25, // instead of fixed 200
+          ),
+          SizedBox(height: height * 0.05), // instead of 40
+
+          ageoption(label: 'Teenager'),
+          ageoption(label: 'Youngster'),
+          ageoption(label: 'Adult'),
+          ageoption(label: 'Old'),
+
+          SizedBox(height: height * 0.15), // instead of 150
+
+         
+        ],
+      ),
+    ),
+  );
+}
 }
 
 class ageoption extends StatelessWidget {

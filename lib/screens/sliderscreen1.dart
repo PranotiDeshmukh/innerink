@@ -7,10 +7,13 @@ class Sliderscreen1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+     final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    return Scaffold(
       body: Container(
-        height: double.infinity,
-        width: double.infinity,
+        height: screenHeight,
+        width: screenWidth,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -23,7 +26,7 @@ class Sliderscreen1 extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.only(top: 18.0),
+          padding: EdgeInsets.only(top: screenHeight * 0.02),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -31,42 +34,57 @@ class Sliderscreen1 extends StatelessWidget {
                 "Express your \nFeelings",
                 style: TextStyle(
                   color: AppColor.secondarycolor,
-                  fontSize: 40,
+                  fontSize: screenWidth * 0.1, // responsive font
                   fontWeight: FontWeight.bold,
                 ),
               ),
               
               Padding(
-                padding: EdgeInsetsGeometry.symmetric(
-                  vertical: 50,
-                  horizontal: 100,
+                padding: EdgeInsets.symmetric(
+                  vertical: screenHeight * 0.06,
+                  horizontal: screenWidth * 0.25,
                 ),
                 child: Text(
                   "welcome to InnerInk!!",
                   style: TextStyle(
                     color: AppColor.secondarycolor,
-                    fontSize: 18.0,
+                    fontSize: screenWidth * 0.045,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left:25.0),
-                child: Image.asset("assets/images/smile.png", height: 300, width: 300),
+                padding: EdgeInsets.only(left: screenWidth * 0.07),
+                child: Image.asset(
+                  "assets/images/smile.png",
+                  height: screenHeight * 0.35,
+                  width: screenWidth * 0.7,
+                ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 30.0,top: 110.0),
+                padding: EdgeInsets.only(
+                  left: screenWidth * 0.08,
+                  top: screenHeight * 0.13,
+                ),
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> Loginscreen()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Loginscreen()),
+                    );
                   },
-                  style: 
-                  ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 14,horizontal: 120,
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(
+                      vertical: screenHeight * 0.02,
+                      horizontal: screenWidth * 0.3,
                     ),
-                    backgroundColor: Colors.blue,foregroundColor: AppColor.secondarycolor,
-                 ),
-                  child: Text("Continue",style: TextStyle(fontSize: 20),),
+                    backgroundColor: Colors.blue,
+                    foregroundColor: AppColor.secondarycolor,
+                  ),
+                  child: Text(
+                    "Continue",
+                    style: TextStyle(fontSize: screenWidth * 0.05),
+                  ),
                 ),
               ),
             ],

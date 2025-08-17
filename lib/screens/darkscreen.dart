@@ -9,112 +9,134 @@ import 'package:innerink_diary/screens/profile.dart';
 class maindarkscreen extends StatelessWidget {
   const maindarkscreen({super.key});
 
-  @override
+@override
   Widget build(BuildContext context) {
+ 
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Stack(
         children: [
-          // Background gradient
+          
           Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color(0xFF0D0C3B), // Dark top color
+                  Color(0xFF0D0C3B),
                   Color(0xFF2B2559),
-                  Color(0xFF5B3D70), // Bottom purple
+                  Color(0xFF5B3D70),
                 ],
               ),
             ),
           ),
 
-          // Curved image at the top
-          ClipPath(//cuts the container the way we want 
+          // 🔹 Curved image at the top
+          ClipPath(
             clipper: TopCurveClipper(),
             child: Container(
-              height: MediaQuery.of(context).size.height * 0.5,
+              height: height * 0.5,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/images/realphoto.png"), // your image
+                  image: AssetImage("assets/images/realphoto.png"),
                   fit: BoxFit.cover,
                 ),
               ),
             ),
           ),
-         // Text("helooo",style: TextStyle(color: Colors.white,fontSize: 40),),
-         Padding(
-           padding: const EdgeInsets.only(top: 20),
-           child: Row(
-             children: [
-              SizedBox(width: 10,),
-               Icon(Icons.menu,color: AppColor.secondarycolor,size: 35,),
-               SizedBox(width: 180,),
-               GestureDetector(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>mainlightscreen()));
-                },
-                child:Icon(Icons.sunny,color: AppColor.secondarycolor,size: 35,),
-               ),
-                SizedBox(width: 15,),
-               Icon(Icons.search,color: AppColor.secondarycolor,size: 35,),
-                SizedBox(width: 15,),
-               Icon(Icons.settings,color: AppColor.secondarycolor,size: 35,),
-                SizedBox(width: 15,),
-             ],
-           ),
-         ),
-         
 
-         Padding(
-           padding: const EdgeInsets.only(top: 290,left: 10),
-           child: Text("2025",style: TextStyle(color: AppColor.primarycolor,fontSize: 35),),
-         ),
-
-         Padding(
-           padding: const EdgeInsets.only(top: 750),
-           child: Row(
-            children: [
-              SizedBox(width: 15,),
-
-              GestureDetector(
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Calendarscreen()));
-                },
-                child:CircleAvatar(
-                
-                      backgroundColor: AppColor.ternarycolor,
-                      radius: 29,
-                      child: Icon(Icons.calendar_today, color: AppColor.secondarycolor,size: 29,),
-                    ), 
-              ),
+          // 🔹 Top bar (menu, sun, search, settings)
+          Padding(
+            padding: EdgeInsets.only(top: height * 0.03, left: width * 0.03),
+            child: Row(
+              children: [
+                Icon(Icons.menu,
+                    color: AppColor.secondarycolor, size: width * 0.09),
+                     SizedBox(width: width * 0.46),
+              //  Spacer(), // pushes others to right
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const mainlightscreen()),
+                    );
+                  },
                
-                    SizedBox(width: 80,),
-           
-                     CircleAvatar(
-                      radius: 34,
-                      backgroundColor: AppColor.secondarycolor,
-                      child: Icon(Icons.add, color: AppColor.primarycolor,size: 30,),
-                    ),
-                     SizedBox(width: 80,),
+                  child: Icon(Icons.sunny,
+                      color: AppColor.secondarycolor, size: width * 0.09),
+                ),
+                SizedBox(width: width * 0.04),
+                Icon(Icons.search,
+                    color: AppColor.secondarycolor, size: width * 0.09),
+                SizedBox(width: width * 0.04),
+                Icon(Icons.settings,
+                    color: AppColor.secondarycolor, size: width * 0.09),
+                SizedBox(width: width * 0.03),
+              ],
+            ),
+          ),
 
-                     GestureDetector(
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfileScreen()));
-                      },
-                      child: 
-                     CircleAvatar(
-                      radius: 29,
-                      backgroundColor: AppColor.ternarycolor,
-                      child: Icon(Icons.person, color: AppColor.secondarycolor,size: 29,),
-                    ),
-                     )
-           
-                     
-           
-            ],
-           ),
-         )
+          
+          Padding(
+            padding: EdgeInsets.only(top: height * 0.35, left: width * 0.03),
+            child: Text(
+              "2025",
+              style: TextStyle(
+                color: AppColor.primarycolor,
+                fontSize: width * 0.09,
+              ),
+            ),
+          ),
+
+        
+          Positioned(
+            bottom: height * 0.05,
+            left: 0,
+            right: 0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                // Calendar
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Calendarscreen()));
+                  },
+                  child: CircleAvatar(
+                    backgroundColor: AppColor.ternarycolor,
+                    radius: width * 0.08,
+                    child: Icon(Icons.calendar_today,
+                        color: AppColor.secondarycolor, size: width * 0.07),
+                  ),
+                ),
+
+                
+                CircleAvatar(
+                  radius: width * 0.1,
+                  backgroundColor: AppColor.secondarycolor,
+                  child: Icon(Icons.add,
+                      color: AppColor.primarycolor, size: width * 0.08),
+                ),
+
+                // Profile
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ProfileScreen()));
+                  },
+                  child: CircleAvatar(
+                    backgroundColor: AppColor.ternarycolor,
+                    radius: width * 0.08,
+                    child: Icon(Icons.person,
+                        color: AppColor.secondarycolor, size: width * 0.07),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -126,7 +148,7 @@ class TopCurveClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     Path path = Path();
     path.lineTo(0, size.height * 0.8);
-    path.quadraticBezierTo(//to make the curve 
+    path.quadraticBezierTo(
       size.width * 0.5, size.height, // control point
       size.width, size.height * 0.8, // end point
     );

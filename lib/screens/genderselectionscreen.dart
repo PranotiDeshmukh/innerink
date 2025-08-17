@@ -9,10 +9,12 @@ class GenderSelectionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+       final height = MediaQuery.of(context).size.height;
+        final width = MediaQuery.of(context).size.width;
+     return Scaffold(
       body: Container(
-        height: double.infinity,
-        width: double.infinity,
+        height: height,
+        width: width,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [Color(0xFFe1bce7), Color(0xFF8a5f99)],
@@ -20,54 +22,43 @@ class GenderSelectionScreen extends StatelessWidget {
             end: Alignment.bottomCenter,
           ),
         ),
-       padding: const EdgeInsets.symmetric( vertical: 40),
-        child:
-         Column(
+        padding: EdgeInsets.symmetric(vertical: height * 0.05),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+       
             Padding(
-              padding:  EdgeInsets.only(right: 100),
-              child:  Text(
-                'What is your gender ? ',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              padding: EdgeInsets.only(left: width * 0.05),
+              child: Text(
+                'What is your gender?',
+                style: TextStyle(
+                  fontSize: width * 0.06, // responsive font size
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-            SizedBox(height: 20),
-            Image.asset(
-              'assets/images/qno1.png', // Replace with your image
-              height: 240,
+
+            SizedBox(height: height * 0.03),
+
+            
+            Center(
+              child: Image.asset(
+                'assets/images/qno1.png',
+                height: height * 0.3, // responsive image size
+              ),
             ),
-             SizedBox(height: 20),
-            GenderOption(label: 'Female',),
-            // GestureDetector(
-            //   onTap: ,
-            // ),
+
+            SizedBox(height: height * 0.03),
+
+           
+            GenderOption(label: 'Female'),
             GenderOption(label: 'Male'),
             GenderOption(label: 'Other'),
-             Spacer(),
-             
-            Row(
-              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-              children:  [
+            
 
-                
-                
-                SizedBox(width: 300,),
-
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> AgegroupScreen()));
-                    
-                  },
-                  child: CircleAvatar(
-                  backgroundColor: Colors.white,
-                  child: Icon(Icons.arrow_forward, color: Colors.black,size: 30,),
-                ) ,
-                )
-
-                
-              ],
-            )
+            
+           
           ],
         ),
       ),
@@ -83,19 +74,30 @@ class GenderOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
     return Card(
-      margin: const EdgeInsets.symmetric(vertical: 6 , horizontal: 20),
+      margin: EdgeInsets.symmetric(
+        vertical: width * 0.02,
+        horizontal: width * 0.05,
+      ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: Obx(() => RadioListTile<String>(
-            title: Text(label),
-            value: label,
-            groupValue: genderController.selectedGender.value,
-            onChanged: (value) {genderController.selectGender(value!);
+      child: Obx(
+        () => RadioListTile<String>(
+          title: Text(
+            label,
+            style: TextStyle(fontSize: width * 0.045),
+          ),
+          value: label,
+          groupValue: genderController.selectedGender.value,
+          onChanged: (value) {
+           
+            genderController.selectGender(value!);
             Navigator.push(context, MaterialPageRoute(builder: (context)=>AgegroupScreen()));
-            },
-            activeColor: Colors.purple,
-          ),
-          ),
+          },
+          activeColor: Colors.purple,
+        ),
+      ),
     );
   }
 }

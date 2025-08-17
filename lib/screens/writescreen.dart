@@ -14,106 +14,96 @@ class Writescreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        decoration:  const BoxDecoration(
+        height: screenHeight,
+        width: screenWidth,
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [
-              Color(0xFFe1bce7), Color(0xFF8a5f99)],
+            colors: [Color(0xFFe1bce7), Color(0xFF8a5f99)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
         ),
-        child: Column(children: [
-          Padding(
-            padding: const EdgeInsets.only(top:40 ,right:30 ),
-            child: Text("How often you write diaries ?",style: TextStyle(color: AppColor.primarycolor,fontSize: 25,fontWeight: FontWeight.bold),),
-          ),
-          Image.asset("assets/images/write.png",height: 290,),
-
-          writeoption(label: 'I’m new to it'),
-          writeoption(label: 'Occasionally'),
-          writeoption(label: 'It depends'),
-          writeoption(label: 'Frequently'),
-
-          SizedBox(height: 120,),
-
-          Padding(
-            padding: const EdgeInsets.only(left: 10,),
-            child: Row(
-              children: [
-                GestureDetector(
-                  onTap: (){
-                    Navigator.push(
-                              context,
-                                  MaterialPageRoute(builder: (context) => AgegroupScreen()),
-                            );
-                  },
-                    child: CircleAvatar(
-                    backgroundColor: AppColor.secondarycolor,
-                        child: Icon(Icons.arrow_back,color: AppColor.primarycolor,size: 30,),
-                                    ),
-                  
-            
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(
+                top: screenHeight * 0.05, // instead of fixed 40
+                right: screenWidth * 0.08, // instead of fixed 30
+              ),
+              child: Text(
+                "How often you write diaries ?",
+                style: TextStyle(
+                  color: AppColor.primarycolor,
+                  fontSize: screenWidth * 0.06, // instead of 25
+                  fontWeight: FontWeight.bold,
                 ),
-                // CircleAvatar(
-                //   backgroundColor: AppColor.secondarycolor,
-                //       child: Icon(Icons.arrow_back,color: AppColor.primarycolor,size: 30,),
-                // ),
-                
-                SizedBox(width: 280,),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Keepdiaryscreen() ));
-                  },
-                  child:                 Padding(
-                   padding: const EdgeInsets.only(right: 10),
-                   
-                   child: CircleAvatar(
-                    backgroundColor: AppColor.secondarycolor,
-                        child: Icon(Icons.arrow_forward,color: AppColor.primarycolor,size: 30,),
-                                   ),
-                 ), 
-                ),
-            
-                 
-              ],
+                textAlign: TextAlign.center,
+              ),
             ),
-          )
-          
 
-        ],),
+            SizedBox(height: screenHeight * 0.03),
+
+            Image.asset(
+              "assets/images/write.png",
+              height: screenHeight * 0.35, // instead of fixed 290
+            ),
+
+            SizedBox(height: screenHeight * 0.02),
+
+            writeoption(label: 'I’m new to it'),
+            writeoption(label: 'Occasionally'),
+            writeoption(label: 'It depends'),
+            writeoption(label: 'Frequently'),
+
+            SizedBox(height: screenHeight * 0.12), // instead of fixed 120
+          ],
+        ),
       ),
     );
   }
-  }
+}
 
-  class writeoption extends StatelessWidget {
-     WritescreenController writecontroller = Get.find();
-     String label;
+class writeoption extends StatelessWidget {
+  final WritescreenController writecontroller = Get.find();
+  final String label;
 
-     writeoption({required this.label});
+  writeoption({required this.label, super.key});
 
   @override
   Widget build(BuildContext context) {
-   
-  
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 06 , horizontal: 20),
+      margin: EdgeInsets.symmetric(
+        vertical: screenWidth * 0.015, // instead of fixed 6
+        horizontal: screenWidth * 0.05, // instead of fixed 20
+      ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
-      child: Obx(() => RadioListTile(
-        title: Text(label),
-        value: label,
-       groupValue: writecontroller.selectedwrite.value,
-        onChanged:(value) {
-          writecontroller.selectedwrite(value!);
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>Keepdiaryscreen()));
-        } ,
-        activeColor: Colors.purple,)),
+      child: Obx(
+        () => RadioListTile(
+          title: Text(
+            label,
+            style: TextStyle(fontSize: screenWidth * 0.045), // responsive text
+          ),
+          value: label,
+          groupValue: writecontroller.selectedwrite.value,
+          onChanged: (value) {
+            writecontroller.selectedwrite(value!);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Keepdiaryscreen()),
+            );
+          },
+          activeColor: Colors.purple,
+        ),
+      ),
     );
   }
 }

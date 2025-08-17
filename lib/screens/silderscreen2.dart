@@ -7,10 +7,12 @@ class Silderscreen2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
-        height: double.infinity,
-        width: double.infinity,
+        height: screenHeight,
+        width: screenWidth,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -22,49 +24,71 @@ class Silderscreen2 extends StatelessWidget {
             ],
           ),
         ),
-        child: 
-
-        Padding(
-          padding: const EdgeInsets.only(top: 18),
+        child: Padding(
+          padding: EdgeInsets.only(top: screenHeight * 0.02),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Express your \n Dreams",
-              style: TextStyle(color: AppColor.secondarycolor,
-              fontSize: 40,
-              fontWeight: FontWeight.bold,
-              ),),
-           
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 50,horizontal: 100 ),
-                child: Text("Welcome to InnerInk",style: TextStyle(color: AppColor.secondarycolor,fontSize: 18 ,fontWeight: FontWeight.w500),),
-              ),
-          
-            
-              Padding(
-                  padding: const EdgeInsets.only(left:33.0),
-                  child:  Image.asset("assets/images/slider2.png", height: 300, width: 300),
+              Text(
+                "Express your \n Dreams",
+                style: TextStyle(
+                  color: AppColor.secondarycolor,
+                  fontSize: screenWidth * 0.09, // Responsive font
+                  fontWeight: FontWeight.bold,
                 ),
-                
-                Padding(
-                  padding: const EdgeInsets.only(left: 30.0,top: 110.0),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Loginscreen()));
-                    },
-                    style: 
-                    ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(vertical: 14,horizontal: 120,
-                      ),
-                      backgroundColor: Colors.blue,foregroundColor: AppColor.secondarycolor,
-                   ),
-                    child: Text("Continue",style: TextStyle(fontSize: 20),),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  vertical: screenHeight * 0.06,
+                  horizontal: screenWidth * 0.25,
+                ),
+                child: Text(
+                  "Welcome to InnerInk",
+                  style: TextStyle(
+                    color: AppColor.secondarycolor,
+                    fontSize: screenWidth * 0.045,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: screenWidth * 0.08),
+                child: Image.asset(
+                  "assets/images/slider2.png",
+                  height: screenHeight * 0.35,
+                  width: screenWidth * 0.7,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                  left: screenWidth * 0.07,
+                  top: screenHeight * 0.12,
+                ),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Loginscreen()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(
+                      vertical: screenHeight * 0.018,
+                      horizontal: screenWidth * 0.30,
+                    ),
+                    backgroundColor: Colors.blue,
+                    foregroundColor: AppColor.secondarycolor,
+                  ),
+                  child: Text(
+                    "Continue",
+                    style: TextStyle(fontSize: screenWidth * 0.05),
+                  ),
+                ),
+              ),
             ],
           ),
-        )
-      ,),
+        ),
+      ),
     );
   }
 }

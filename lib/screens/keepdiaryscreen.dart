@@ -3,7 +3,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:innerink_diary/colors/App_color.dart';
 import 'package:innerink_diary/controller/keepdiary_controller.dart';
-import 'package:innerink_diary/screens/mainscreen.dart';
+import 'package:innerink_diary/screens/darkscreen.dart';
+//import 'package:innerink_diary/screens/mainscreen.dart';
 //import 'package:innerink_diary/controller/writescreen_controller.dart';
 
 class Keepdiaryscreen extends StatelessWidget {
@@ -12,11 +13,14 @@ class Keepdiaryscreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      
+     final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+
+
+   return Scaffold(
       body: Container(
-        height: double.infinity,
-        width: double.infinity,
+        height: height,
+        width: width,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [Color(0xFFe1bce7), Color(0xFF8a5f99)],
@@ -24,75 +28,101 @@ class Keepdiaryscreen extends StatelessWidget {
             end: Alignment.bottomCenter,
           ),
         ),
-        child: 
-        Column(
+        child: Column(
           children: [
-             Padding(
-          padding: const EdgeInsets.only(top: 40 , left: 20),
-          child: Text("Why do you want to keep Diaries ?",style: TextStyle(color:AppColor.primarycolor,fontSize:25,fontWeight: FontWeight.bold  ),),
-        ),
+            // 🔹 Title
+            Padding(
+              padding: EdgeInsets.only(top: height * 0.05, left: width * 0.05),
+              child: Text(
+                "Why do you want to keep Diaries ?",
+                style: TextStyle(
+                  color: AppColor.primarycolor,
+                  fontSize: width * 0.06,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
 
-        Image.asset("assets/images/keepdiary.png",height: 200,),
+            SizedBox(height: height * 0.03),
 
+            // 🔹 Image
+            Image.asset(
+              "assets/images/keepdiary.png",
+              height: height * 0.25, // responsive image size
+            ),
 
-        keepoption(label: 'Deal with stress'),
-        keepoption(label: 'Daily Reflection'),
-        keepoption(label: 'Deal with anxiety'),
-        keepoption(label: 'For Positivity'),
-        keepoption(label: 'not sure'),
+            SizedBox(height: height * 0.03),
 
-        // Row(
-        //   children: [
-        //     CircleAvatar(
-        //       backgroundColor: AppColor.secondarycolor,
-        //       child: Icon(Icons.arrow_back,size: 30,)
-        //     ),
-        //      SizedBox(width: 300,),
-        //      CircleAvatar(
-        //       backgroundColor: AppColor.secondarycolor,
-        //       child: Icon(Icons.arrow_forward,size: 30,)
-        //     )
-        //   ],
-        // )
-        SizedBox(height: 20,),
+            // 🔹 Options
+            KeepOption(label: 'Deal with stress'),
+            KeepOption(label: 'Daily Reflection'),
+            KeepOption(label: 'Deal with anxiety'),
+            KeepOption(label: 'For Positivity'),
+            KeepOption(label: 'Not sure'),
 
-        ElevatedButton(onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context)=> mainscreen()));
-        },
-        style: ElevatedButton.styleFrom( padding: EdgeInsets.symmetric(horizontal: 145,vertical: 14),
-            backgroundColor: Colors.blue),
-           child: Text("Login",style: TextStyle(color: AppColor.secondarycolor,fontSize: 20),),),
+            SizedBox(height: height * 0.04),
 
-        
-
+            // 🔹 Login Button
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => maindarkscreen()));
+              },
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(
+                  horizontal: width * 0.25, // responsive width
+                  vertical: height * 0.018,
+                ),
+                backgroundColor: Colors.blue,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              child: Text(
+                "Login",
+                style: TextStyle(
+                  color: AppColor.secondarycolor,
+                  fontSize: width * 0.05,
+                ),
+              ),
+            ),
           ],
-        )
-        
-        
+        ),
       ),
     );
   }
 }
 
-class keepoption extends StatelessWidget {
-    KeepdiaryController keepcontroller = Get.find();
-    String label;
+class KeepOption extends StatelessWidget {
+  final KeepdiaryController keepcontroller = Get.find();
+  final String label;
 
-   keepoption({required this.label});
+  KeepOption({required this.label, super.key});
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
     return Card(
-      margin: EdgeInsets.symmetric(vertical:8,horizontal: 20),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadiusGeometry.circular(12),
+      margin: EdgeInsets.symmetric(
+        vertical: width * 0.02,
+        horizontal: width * 0.05,
       ),
-      child: Obx(()=> RadioListTile(
-        title: Text(label),
-        value: label, 
-      groupValue: keepcontroller.selectedkeepdiary.value, 
-      onChanged: (Value)=> keepcontroller.selectkeepdiary(Value!),
-      )),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12), // ✅ fixed here
+      ),
+      child: Obx(
+        () => RadioListTile(
+          title: Text(
+            label,
+            style: TextStyle(fontSize: width * 0.045),
+          ),
+          value: label,
+          groupValue: keepcontroller.selectedkeepdiary.value,
+          onChanged: (value) => keepcontroller.selectkeepdiary(value!),
+          activeColor: AppColor.primarycolor,
+        ),
+      ),
     );
   }
 }

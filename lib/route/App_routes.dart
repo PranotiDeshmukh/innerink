@@ -11,5 +11,6 @@ class AppRoutes {
   static const String Keepdiaryscreen = '/Keepdiaryscreen';
   static const String maindarkscreen = '/maindarkscreen';
   static const String mainlightscreen = '/mainlightscreen';
+  static const String LockScreen = '/LockScreen';
   //static const String CurvedBackgroundScreen = '/CurvedBackgroundScreen';
 }

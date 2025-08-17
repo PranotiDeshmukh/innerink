@@ -22,12 +22,15 @@ class _SplashscreenState extends State<Splashscreen> {
     });
   }
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          gradient:  LinearGradient(
+        height: screenHeight,
+        width: screenWidth,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
@@ -36,12 +39,13 @@ class _SplashscreenState extends State<Splashscreen> {
             ],
           ),
         ),
-        
         child: Center(
-          child: Image.asset("assets/images/image.png",
-          height: 160,
-          width: 160,),
-       ),
+          child: Image.asset(
+            "assets/images/image.png",
+            height: screenHeight * 0.2, // instead of fixed 160
+            width: screenWidth * 0.4,   // instead of fixed 160
+          ),
+        ),
       ),
     );
   }

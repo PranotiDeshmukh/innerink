@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:innerink_diary/screens/123.dart';
 
 import 'package:innerink_diary/screens/Splashscreen.dart';
 import 'package:innerink_diary/screens/agegroup_screen.dart';
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute:  '/maindarkscreen' ,
+      initialRoute:  'Splashscreen' ,
+ 
       routes:
        {
         '/createAccount' : (context) => createAccount(),
@@ -42,7 +44,9 @@ class MyApp extends StatelessWidget {
         '/Keepdiaryscreen' : (context) => Keepdiaryscreen(),
        // '/CurvedBackgroundScreen' : (context)=>CurvedBackgroundScreen(),
        '/maindarkscreen' : (context)=>maindarkscreen(),
-       '/mainlightscreen' : (context)=>mainlightscreen(),
+         '/mainlightscreen' : (context)=>mainlightscreen(),
+       '/LockScreen' : (context)=> LockScreen(),
+       
       },
     );
       
