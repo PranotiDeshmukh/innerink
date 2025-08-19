@@ -8,7 +8,7 @@ import 'package:innerink_diary/screens/create_account.dart';
 import 'package:innerink_diary/screens/darkscreen.dart';
 import 'package:innerink_diary/screens/genderselectionscreen.dart';
 import 'package:innerink_diary/screens/keepdiaryscreen.dart';
-import 'package:innerink_diary/screens/lightscreen.dart';
+
 import 'package:innerink_diary/screens/loginscreen.dart';
 
 import 'package:innerink_diary/screens/silderscreen2.dart';
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute:   '/Loginscreen' ,
+      initialRoute: '/MainDarkScreen' ,
  
       routes:
        {
@@ -43,9 +43,10 @@ class MyApp extends StatelessWidget {
         '/Writescreen' : (context) => Writescreen(),
         '/Keepdiaryscreen' : (context) => Keepdiaryscreen(),
        // '/CurvedBackgroundScreen' : (context)=>CurvedBackgroundScreen(),
-       '/maindarkscreen' : (context)=>maindarkscreen(),
-         '/mainlightscreen' : (context)=>mainlightscreen(),
+       //'/maindarkscreen' : (context)=>maindarkscreen(),
+       //  '/mainlightscreen' : (context)=>mainlightscreen(),
        '/LockScreen' : (context)=> LockScreen(),
+       '/MainDarkScreen' : (context) => MainDarkScreen(),
        
       },
     );

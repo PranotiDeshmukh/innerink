@@ -66,7 +66,7 @@ class Keepdiaryscreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => maindarkscreen()));
+                    MaterialPageRoute(builder: (context) => MainDarkScreen()));
               },
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.symmetric(

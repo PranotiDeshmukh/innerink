@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:innerink_diary/colors/App_color.dart';
+import 'package:innerink_diary/screens/darkscreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -49,7 +51,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 
                 children: [
                   SizedBox(width: 10,),
-                  Icon(Icons.arrow_back,color: AppColor.secondarycolor,size: 30,),
+                  IconButton(onPressed: ()
+                  {
+                   Navigator.push(context, MaterialPageRoute(builder: (context)=>MainDarkScreen())); 
+                  }, 
+                  icon: Icon(Icons.arrow_back)),
+                  //Icon(Icons.arrow_back,color: AppColor.secondarycolor,size: 30,),
                   SizedBox(width: 10,),
                   Text(" My Profile",style: TextStyle(color: AppColor.secondarycolor,fontSize: 22),),
                 ],

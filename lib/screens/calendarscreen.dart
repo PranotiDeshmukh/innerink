@@ -18,7 +18,7 @@ class _CalendarscreenState extends State<Calendarscreen> {
       backgroundColor:Color.fromARGB(255, 230, 161, 243),
      appBar: AppBar(
        backgroundColor:Color.fromARGB(255, 230, 161, 243),
-      title: Text("Calendar",style: TextStyle(color:AppColor.secondarycolor ),),),
+      title: Text("Calendar",style: TextStyle(color:const Color.fromARGB(255, 0, 0, 0),fontWeight: FontWeight.bold ),),),
 
      body: TableCalendar(
       focusedDay: _focusedDay,
